@@ -11,6 +11,7 @@ import {
 import { COLORS, FONTS, SIZES, icons, images } from '../../constants';
 import { styles } from './styles';
 
+// DATA
 import {
   profileData,
   bookOtherWordsForHome,
@@ -19,6 +20,9 @@ import {
   categoriesData,
   myBooksData
 } from './data';
+
+// COMPONENTS
+import { LineDivider } from '../../components';
 
 const Home = ({ navigation }) => {
   const [profile, setProfile] = useState(profileData);
@@ -74,14 +78,36 @@ const Home = ({ navigation }) => {
               <Text style={styles.claim}>Claim</Text>
             </View>
           </TouchableOpacity>
-
-          {/* Divider */}
+          <LineDivider />
 
           {/* Get Points */}
-
-          {/* Divider */}
+          <TouchableOpacity
+            style={styles.flex}
+            onPress={() => console.log('Get Points')}>
+            <View style={styles.headClaim}>
+              <Image
+                source={icons.point_icon}
+                resizeMode="contain"
+                style={styles.claimImage}
+              />
+              <Text style={styles.claim}>Get Point</Text>
+            </View>
+          </TouchableOpacity>
+          <LineDivider />
 
           {/* My Card */}
+          <TouchableOpacity
+            style={styles.flex}
+            onPress={() => console.log('Card')}>
+            <View style={styles.headClaim}>
+              <Image
+                style={styles.claimImage}
+                resizeMode="contain"
+                source={icons.card_icon}
+              />
+              <Text style={styles.claim}>My Card</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -96,6 +122,7 @@ const Home = ({ navigation }) => {
       </View>
 
       {/* Body */}
+      <ScrollView style={styles.bodyContainer}></ScrollView>
     </SafeAreaView>
   );
 };
