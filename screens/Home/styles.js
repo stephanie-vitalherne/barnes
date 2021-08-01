@@ -88,6 +88,58 @@ const styles = StyleSheet.create({
     marginLeft: SIZES.base,
     color: COLORS.white,
     ...FONTS.body3
+  },
+  bodyContainer: {
+    marginTop: SIZES.radius
+  },
+  headerBook: {
+    paddingHorizontal: SIZES.padding,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  bookTitle: {
+    color: COLORS.white,
+    ...FONTS.h2
+  },
+  bookMore: {
+    color: COLORS.lightGray,
+    alignSelf: 'flex-start',
+    textDecorationLine: 'underline',
+    ...FONTS.body3
+  },
+  bookContainer: {
+    flex: 1,
+    marginTop: SIZES.padding
+  },
+  bookItem: {
+    flex: 1,
+    marginRight: SIZES.radius
+  },
+  bookCover: {
+    width: 180,
+    height: 250,
+    borderRadius: 20
+  },
+  bookInfo: {
+    marginTop: SIZES.radius,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  clock: {
+    width: 20,
+    height: 20,
+    tintColor: COLORS.lightGray
+  },
+  infoTxt: {
+    marginLeft: 5,
+    color: COLORS.lightGray,
+    ...FONTS.body3
+  },
+  page: {
+    marginLeft: SIZES.radius,
+    width: 20,
+    height: 20,
+    tintColor: COLORS.lightGray
   }
 });
 

@@ -2,7 +2,7 @@
 import { images } from '../../constants';
 
 const profileData = {
-  name: 'Username',
+  name: 'Jonas',
   point: 200
 };
 
