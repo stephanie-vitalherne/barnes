@@ -10,7 +10,7 @@ import {
   ScrollView,
   Animated
 } from 'react-native';
-import { COLORS, FONTS, SIZES, icons, images } from '../../constants';
+import { SIZES, icons } from '../../constants';
 import { styles } from './styles';
 
 const LineDivider = () => {
@@ -179,6 +179,30 @@ const BookDetail = ({ route, navigation }) => {
     );
   }
 
+  function renderButtons() {
+    return (
+      <View style={styles.buttons}>
+        {/* Bookmark */}
+        <TouchableOpacity
+          style={styles.bookmark}
+          onPress={() => console.log('Bookmark')}>
+          <Image
+            source={icons.bookmark_icon}
+            style={styles.bookmarkIcon}
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
+
+        {/* Start */}
+        <TouchableOpacity
+          style={styles.start}
+          onPress={() => console.log('Start Reading')}>
+          <Text style={styles.reading}>Start Reading</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
   if (book) {
     return (
       <View style={styles.mainContainer}>
@@ -187,7 +211,7 @@ const BookDetail = ({ route, navigation }) => {
         {/* Description */}
         <View style={styles.descMainContainer}>{renderDescription()}</View>
         {/* Buttons */}
-        <View style={styles.btnContainer}></View>
+        <View style={styles.btnContainer}>{renderButtons()}</View>
       </View>
     );
   } else {

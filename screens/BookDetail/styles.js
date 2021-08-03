@@ -128,7 +128,39 @@ const styles = StyleSheet.create({
     ...FONTS.body2
   },
   btnContainer: {
-    height: 70
+    height: 70,
+    marginBottom: 30
+  },
+  buttons: {
+    flexDirection: 'row',
+    flex: 1
+  },
+  bookmark: {
+    width: 60,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.secondary,
+    marginLeft: SIZES.padding,
+    marginVertical: SIZES.base,
+    borderRadius: SIZES.radius
+  },
+  bookmarkIcon: {
+    width: 25,
+    height: 25,
+    tintColor: COLORS.lightGray2
+  },
+  start: {
+    flex: 1,
+    backgroundColor: COLORS.primary,
+    marginHorizontal: SIZES.base,
+    marginVertical: SIZES.base,
+    borderRadius: SIZES.radius,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  reading: {
+    color: COLORS.white,
+    ...FONTS.h3
   }
 });
 
