@@ -98,8 +98,34 @@ const styles = StyleSheet.create({
     borderLeftColor: COLORS.lightGray2,
     borderLeftWidth: 1
   },
-  descContainer: {
+  descMainContainer: {
     flex: 2
+  },
+  scrollContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    padding: SIZES.padding
+  },
+  scroll: {
+    width: 4,
+    height: '100%',
+    backgroundColor: COLORS.gray1
+  },
+  scrollBar: {
+    width: 4,
+    backgroundColor: COLORS.lightGray4
+  },
+  descContainer: {
+    paddingLeft: SIZES.padding2
+  },
+  descTitle: {
+    color: COLORS.white,
+    marginBottom: SIZES.padding,
+    ...FONTS.h2
+  },
+  descTxt: {
+    color: COLORS.lightGray,
+    ...FONTS.body2
   },
   btnContainer: {
     height: 70

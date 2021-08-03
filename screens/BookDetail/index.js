@@ -1,10 +1,14 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable no-shadow */
 import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
   ImageBackground,
   TouchableOpacity,
-  Image
+  Image,
+  ScrollView,
+  Animated
 } from 'react-native';
 import { COLORS, FONTS, SIZES, icons, images } from '../../constants';
 import { styles } from './styles';
@@ -19,6 +23,10 @@ const LineDivider = () => {
 
 const BookDetail = ({ route, navigation }) => {
   const [book, setBook] = useState(null);
+  const [scrollHeight, setScrollHeight] = useState(1);
+  const [scrollVisibleHeight, setScrollVisibleHeight] = useState(0);
+  const indicator = new Animated.Value(0);
+
   useEffect(() => {
     let { book } = route.params;
     setBook(book);
@@ -112,13 +120,72 @@ const BookDetail = ({ route, navigation }) => {
     );
   }
 
+  function renderDescription() {
+    const indicatorSize =
+      scrollHeight > scrollVisibleHeight
+        ? (scrollVisibleHeight * scrollVisibleHeight) / scrollHeight
+        : scrollVisibleHeight;
+    const difference =
+      scrollVisibleHeight > indicatorSize
+        ? scrollVisibleHeight - indicatorSize
+        : 1;
+
+    return (
+      <View style={styles.scrollContainer}>
+        <View style={styles.scroll}>
+          <Animated.View
+            style={[
+              styles.scrollBar,
+              {
+                height: indicatorSize,
+                transform: [
+                  {
+                    translateY: Animated.multiply(
+                      indicator,
+                      scrollVisibleHeight / scrollHeight
+                    ).interpolate({
+                      inputRange: [0, difference],
+                      outputRange: [0, difference],
+                      extrapolate: 'clamp'
+                    })
+                  }
+                ]
+              }
+            ]}
+          />
+        </View>
+        <ScrollView
+          scrollEventThrottle={16}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.descContainer}
+          onContentSizeChange={(width, height) => {
+            setScrollHeight(height);
+          }}
+          onLayout={({
+            nativeEvent: {
+              layout: { x, y, width, height }
+            }
+          }) => {
+            setScrollVisibleHeight(height);
+          }}
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { y: indicator } } }],
+            { useNativeDriver: false }
+          )}>
+          <Text style={styles.descTitle}>Description</Text>
+          <Text style={styles.descTxt}>{book.description}</Text>
+        </ScrollView>
+      </View>
+    );
+  }
+
   if (book) {
     return (
       <View style={styles.mainContainer}>
         {/* Book Cover */}
         <View style={styles.coverContainer}>{renderBookInfo()}</View>
         {/* Description */}
-        <View style={styles.descContainer}></View>
+        <View style={styles.descMainContainer}>{renderDescription()}</View>
         {/* Buttons */}
         <View style={styles.btnContainer}></View>
       </View>
