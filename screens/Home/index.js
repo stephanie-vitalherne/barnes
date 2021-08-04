@@ -10,26 +10,19 @@ import {
   ScrollView,
   FlatList
 } from 'react-native';
-import { COLORS, FONTS, SIZES, icons, images } from '../../constants';
+import { COLORS, SIZES, icons } from '../../constants';
 import { styles } from './styles';
 
 // DATA
-import {
-  profileData,
-  bookOtherWordsForHome,
-  bookTheMetropolis,
-  bookTheTinyDragon,
-  categoriesData,
-  myBooksData
-} from './data';
+import { profileData, categoriesData, myBooksData } from './data';
 
 // COMPONENTS
 import { LineDivider } from '../../components';
 
 const Home = ({ navigation }) => {
-  const [profile, setProfile] = useState(profileData);
-  const [myBook, setMyBook] = useState(myBooksData);
-  const [categories, setCategories] = useState(categoriesData);
+  const [profile] = useState(profileData);
+  const [myBook] = useState(myBooksData);
+  const [categories] = useState(categoriesData);
   const [selectedCategory, setSelectedCategory] = useState(1);
 
   function renderHeader(profile) {
