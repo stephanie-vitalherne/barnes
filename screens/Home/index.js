@@ -25,14 +25,14 @@ const Home = ({ navigation }) => {
   const [categories] = useState(categoriesData);
   const [selectedCategory, setSelectedCategory] = useState(1);
 
-  function renderHeader(profile) {
+  function renderHeader(prof) {
     return (
       <View style={styles.profileContainer}>
         {/* Greetings */}
         <View style={styles.greetingsContainer}>
           <View style={styles.greetDetails}>
             <Text style={styles.greetTxt}>Good Morning</Text>
-            <Text style={styles.greetName}>{profile.name}</Text>
+            <Text style={styles.greetName}>{prof.name}</Text>
           </View>
         </View>
 
